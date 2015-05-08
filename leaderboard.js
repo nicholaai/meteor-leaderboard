@@ -49,6 +49,7 @@ if(Meteor.isClient) {
       event.preventDefault();
       var playerNameVar = event.target.playerName.value;
       Meteor.call('insertPlayerData', playerNameVar);
+      event.target.playerName.value = "";
     }
   });
 }
