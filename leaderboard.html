@@ -3,9 +3,13 @@
 </head>
 
 <body>
-  <h1>Leaderboard</h1>
-  {{> leaderboard}}
-  {{> loginButtons}}
+  <div class="container">
+    <div class="content">
+      <h1>Leaderboard</h1>
+      {{> leaderboard}}
+      {{> loginButtons}}
+    </div>
+  </div>
 </body>
 
 
@@ -29,8 +33,8 @@
 <template name="addPlayerForm">
   {{#if currentUser}}
     <form>
-      <input type="text" name="playerName">
-      <input type="submit" value="Add Player">
+      <input type="text" name="playerName" placeholder="New player...">
+      <input type="submit" value="Add Player" class="submit">
     </form>
   {{/if}}
 </template>
