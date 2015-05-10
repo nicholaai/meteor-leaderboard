@@ -1,40 +1,58 @@
 <head>
   <title>Leaderboard</title>
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-  <div class="container">
-    <div class="content">
-      <h1>Leaderboard</h1>
-      {{> leaderboard}}
-      {{> loginButtons}}
+  <div class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <a class="navbar-brand">LEADERBOARD</a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
     </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        {{> loginButtons }}  
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+     <h1 class="text-center">Scores</h1>
+      {{> leaderboard}}
   </div>
 </body>
 
 
 <template name="leaderboard">
-  <ul>
+  <ol class="list-group">
     {{#each player}}
-      <li class="player {{selectedClass}}">{{name}}: {{score}}</li>
+      <li class="player {{selectedClass}} list-group-item">{{name}}: {{score}}</li>
     {{/each}}
     {{#if showSelectedPlayer}}
-      <input type="button" class="increment" value="Give 5 Points">
-      <input type="button" class="decrement" value="Take 5 Points">
-      <input type="button" class="remove" value="Remove Player">
+      <div class="points">
+        <input type="button" class="increment btn btn-success" value="Give 5 Points">
+        <input type="button" class="decrement btn btn-warning" value="Take 5 Points">
+        <input type="button" class="remove btn btn-danger" value="Remove Player">
+      </div>
     {{/if}}
     {{#if showSelectedPlayer}}
       <p>Selected Player: {{showSelectedPlayer.name}}</p>
     {{/if}}
-  </ul>
+  </ol>
   {{> addPlayerForm}}
 </template>
 
 <template name="addPlayerForm">
   {{#if currentUser}}
-    <form>
-      <input type="text" name="playerName" placeholder="New player...">
-      <input type="submit" value="Add Player" class="submit">
+    <form class="form-inline">
+      <div class="form-group">
+        <input type="text" name="playerName" class="form-control" placeholder="New player...">
+        <input type="submit" value="Add Player" class="submit btn btn-default">
+      </div>
     </form>
   {{/if}}
 </template>
