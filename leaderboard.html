@@ -21,13 +21,22 @@
     </div>
   </div>
   <div class="container">
+    {{#if currentUser}}
      <h1 class="text-center">Scores</h1>
       {{> leaderboard}}
+    {{else}}
+      <div class="text-center">
+        <h1>Welcome</h1>
+        <p>Start by creating your account.</p>
+        <p>Add players to your leaderboard.</p>
+        <p>Add or remove points as you see fit!</p>
+      </div>
+    {{/if}}
   </div>
 </body>
 
 
-<template name="leaderboard">
+<template name="leaderboard"> 
   <ol class="list-group">
     {{#each player}}
       <li class="player {{selectedClass}} list-group-item">{{name}}: {{score}}</li>
